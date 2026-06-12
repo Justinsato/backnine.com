@@ -2,213 +2,762 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Backnine Trades — Brand Package</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Back9 Trades — Repair &amp; Maintenance for Bay Area Multifamily</title>
+<meta name="description" content="Back9 Trades is a full-service repair and maintenance company for multifamily owners and property managers in the San Francisco Bay Area. Work orders, 24/7 emergency dispatch, unit turns, and recurring services.">
 <style>
+  :root {
+    --navy: #0d3b66;
+    --navy-dark: #092b4c;
+    --orange: #f4a261;
+    --orange-dark: #e0945a;
+    --ink: #1a1a1a;
+    --muted: #555;
+    --line: #d4d9e0;
+    --bg-soft: #f5f7fa;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
   body {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    background: #ffffff;
-    color: #1a1a1a;
+    color: var(--ink);
+    background: #fff;
     margin: 0;
-    padding: 48px;
-    line-height: 1.45;
+    line-height: 1.55;
   }
-  @media (prefers-color-scheme: dark) {
-    html, body { background: #ffffff !important; color: #1a1a1a !important; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+  h2 {
+    font-family: Georgia, "Times New Roman", serif;
+    color: var(--navy);
+    font-size: 30px;
+    margin: 0 0 8px;
+    letter-spacing: -0.5px;
   }
-  .container { max-width: 800px; margin: 0 auto; }
-  header {
-    border-bottom: 3px solid #0d3b66;
-    padding-bottom: 18px;
-    margin-bottom: 28px;
+  .kicker {
+    color: var(--orange-dark);
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    margin-bottom: 10px;
+  }
+  .section { padding: 72px 0; }
+  .section.alt { background: var(--bg-soft); }
+  .section-intro { max-width: 680px; color: var(--muted); margin-bottom: 36px; }
+
+  /* Header */
+  .topbar {
+    background: var(--navy-dark);
+    color: #c8d3e0;
+    font-size: 13px;
+    padding: 7px 0;
+  }
+  .topbar .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+  .topbar a { color: var(--orange); text-decoration: none; font-weight: 600; }
+  header.site {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: #fff;
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-row {
     display: flex;
     align-items: center;
-    gap: 18px;
+    justify-content: space-between;
+    padding: 14px 0;
+    gap: 16px;
   }
-  .mark {
-    width: 72px; height: 72px;
-    background: #0d3b66;
+  .brand-lockup { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+  .brand-mark {
+    width: 48px; height: 48px;
+    background: var(--navy);
     border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
     flex-shrink: 0;
   }
-  .mark svg { width: 54px; height: 54px; }
+  .brand-mark svg { width: 36px; height: 36px; display: block; }
   .brand-text { line-height: 1; }
   .brand-name {
-    font-family: Georgia, serif;
-    font-size: 34pt;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 26px;
     font-weight: 700;
-    color: #0d3b66;
+    color: var(--navy);
     letter-spacing: -0.8px;
   }
-  .brand-name .nine { color: #f4a261; font-style: italic; }
+  .brand-name .nine { color: var(--orange); font-style: italic; }
   .brand-sub {
-    font-size: 10pt;
+    font-size: 9px;
     font-weight: 700;
-    color: #0d3b66;
-    letter-spacing: 5px;
+    color: var(--navy);
+    letter-spacing: 4px;
     text-transform: uppercase;
-    margin-top: 6px;
-    border-top: 1.5px solid #f4a261;
-    padding-top: 4px;
+    margin-top: 3px;
+    border-top: 1.5px solid var(--orange);
+    padding-top: 2px;
     display: inline-block;
   }
-  h1 { color: #0d3b66; font-size: 18pt; margin: 0 0 6px; }
-  .tagline { color: #555; font-size: 11pt; margin-bottom: 32px; }
-  .toc { font-size: 10pt; color: #666; margin-bottom: 28px; }
-  .doc {
-    border: 1px solid #d4d9e0;
-    border-radius: 6px;
-    padding: 20px 24px;
-    margin-bottom: 18px;
-    background: #fafbfc;
-    display: flex;
-    align-items: center;
-    gap: 18px;
+  nav.main { display: flex; gap: 22px; align-items: center; flex-wrap: wrap; }
+  nav.main a {
+    color: var(--navy);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
   }
-  .doc-num {
+  nav.main a:hover { color: var(--orange-dark); }
+  .btn {
+    display: inline-block;
+    background: var(--orange);
+    color: var(--navy);
+    font-weight: 700;
+    font-size: 14px;
+    padding: 11px 20px;
+    border-radius: 4px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+  }
+  .btn:hover { background: var(--orange-dark); }
+  .btn.ghost {
+    background: transparent;
+    color: #fff;
+    border: 1.5px solid rgba(255,255,255,0.6);
+  }
+  .btn.ghost:hover { border-color: var(--orange); color: var(--orange); background: transparent; }
+  .btn.outline-navy {
+    background: transparent;
+    color: var(--navy);
+    border: 1.5px solid var(--navy);
+  }
+  .btn.outline-navy:hover { background: var(--navy); color: #fff; }
+
+  /* Hero */
+  .hero {
+    background: linear-gradient(160deg, var(--navy) 0%, var(--navy-dark) 75%);
+    color: #fff;
+    padding: 88px 0 72px;
+  }
+  .hero .kicker { color: var(--orange); }
+  .hero h1 {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 46px;
+    line-height: 1.12;
+    margin: 0 0 18px;
+    letter-spacing: -0.8px;
+    max-width: 760px;
+  }
+  .hero p.lede {
+    font-size: 18px;
+    color: #c8d3e0;
+    max-width: 640px;
+    margin: 0 0 30px;
+  }
+  .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; }
+
+  /* Stats band */
+  .stats {
+    background: #fff;
+    border-bottom: 1px solid var(--line);
+  }
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    padding: 30px 0;
+  }
+  .stat { text-align: center; }
+  .stat .num {
+    font-family: Georgia, serif;
+    font-size: 30px;
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1.1;
+  }
+  .stat .lbl { font-size: 13px; color: var(--muted); margin-top: 4px; }
+
+  /* Cards */
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+  .card {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-top: 4px solid var(--orange);
+    border-radius: 6px;
+    padding: 26px 26px 22px;
+  }
+  .card.navy { border-top-color: var(--navy); }
+  .card.red { border-top-color: #c1121f; }
+  .card.green { border-top-color: #2a9d8f; }
+  .card.gray { border-top-color: #6c757d; }
+  .card h3 {
+    color: var(--navy);
+    font-size: 18px;
+    margin: 0 0 8px;
+  }
+  .card p { color: var(--muted); font-size: 14.5px; margin: 0 0 10px; }
+  .card ul { margin: 0; padding-left: 18px; font-size: 14px; color: #333; }
+  .card li { margin-bottom: 5px; }
+
+  /* Skills */
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+  .chip {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 7px 15px;
+    font-size: 13.5px;
+    color: var(--navy);
+    font-weight: 600;
+  }
+
+  /* Process */
+  .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; }
+  .step .num {
     width: 40px; height: 40px;
-    background: #0d3b66;
-    color: #f4a261;
+    background: var(--navy);
+    color: var(--orange);
     border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
     font-family: Georgia, serif;
-    font-size: 18pt;
+    font-size: 18px;
     font-weight: 700;
-    flex-shrink: 0;
+    margin-bottom: 12px;
   }
-  .doc-body { flex: 1; }
-  .doc-title { font-size: 13pt; font-weight: 700; color: #0d3b66; margin: 0 0 4px; }
-  .doc-desc { font-size: 10pt; color: #555; margin-bottom: 8px; }
-  .doc-link {
-    display: inline-block;
-    background: #f4a261;
-    color: #0d3b66;
-    font-size: 9.5pt;
-    font-weight: 700;
-    padding: 6px 14px;
-    border-radius: 3px;
-    text-decoration: none;
-    margin-right: 8px;
+  .step h3 { color: var(--navy); font-size: 16px; margin: 0 0 6px; }
+  .step p { font-size: 14px; color: var(--muted); margin: 0; }
+
+  /* Compliance */
+  .badges { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .badge {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 18px 20px;
+    font-size: 14px;
   }
-  .doc-link:hover { background: #e0945a; }
-  .filename { font-family: "Courier New", monospace; font-size: 9pt; color: #777; }
-  footer {
-    margin-top: 36px;
-    padding-top: 18px;
-    border-top: 2px solid #0d3b66;
-    font-size: 9pt;
-    color: #666;
-    line-height: 1.5;
+  .badge strong { display: block; color: var(--navy); margin-bottom: 4px; font-size: 15px; }
+
+  /* Portal */
+  .portal { background: var(--navy); color: #fff; }
+  .portal h2 { color: #fff; }
+  .portal .kicker { color: var(--orange); }
+  .portal .section-intro { color: #c8d3e0; }
+  .portal-card {
+    background: #fff;
+    color: var(--ink);
+    border-radius: 8px;
+    padding: 30px;
+    max-width: 720px;
   }
-  .summary-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
-    margin-bottom: 28px;
-  }
-  .stat {
-    background: #0d3b66;
-    color: #fff;
-    padding: 14px 18px;
+  .tabs { display: flex; gap: 8px; margin-bottom: 22px; flex-wrap: wrap; }
+  .tab {
+    background: var(--bg-soft);
+    border: 1px solid var(--line);
     border-radius: 4px;
+    padding: 10px 18px;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--navy);
+    cursor: pointer;
   }
-  .stat .label { color: #f4a261; font-size: 8.5pt; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
-  .stat .value { font-size: 13pt; font-weight: 700; }
+  .tab.active { background: var(--navy); color: #fff; border-color: var(--navy); }
+  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .form-grid .full { grid-column: 1 / -1; }
+  label { font-size: 12.5px; font-weight: 700; color: var(--navy); display: block; margin-bottom: 4px; }
+  input, select, textarea {
+    width: 100%;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 10px 12px;
+    font-size: 14px;
+    font-family: inherit;
+    color: var(--ink);
+    background: #fff;
+  }
+  textarea { min-height: 96px; resize: vertical; }
+  .form-note { font-size: 12.5px; color: var(--muted); margin-top: 12px; }
+  .portal-side { font-size: 14.5px; color: #c8d3e0; }
+  .portal-side li { margin-bottom: 8px; }
+  .portal-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 40px; align-items: start; }
+
+  /* FAQ */
+  details {
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    background: #fff;
+    margin-bottom: 12px;
+    padding: 0 20px;
+  }
+  summary {
+    cursor: pointer;
+    font-weight: 700;
+    color: var(--navy);
+    font-size: 15.5px;
+    padding: 16px 0;
+    list-style: none;
+    position: relative;
+  }
+  summary::after { content: "+"; position: absolute; right: 0; color: var(--orange-dark); font-size: 20px; }
+  details[open] summary::after { content: "\2212"; }
+  details p { margin: 0 0 16px; color: var(--muted); font-size: 14.5px; }
+
+  /* Footer */
+  footer.site {
+    background: var(--navy-dark);
+    color: #c8d3e0;
+    padding: 48px 0 28px;
+    font-size: 14px;
+  }
+  footer.site a { color: var(--orange); text-decoration: none; }
+  .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 32px; margin-bottom: 28px; }
+  .footer-grid h4 { color: #fff; font-size: 14px; margin: 0 0 10px; text-transform: uppercase; letter-spacing: 1px; }
+  .footer-grid ul { list-style: none; margin: 0; padding: 0; }
+  .footer-grid li { margin-bottom: 7px; }
+  .fine { border-top: 1px solid rgba(255,255,255,0.15); padding-top: 18px; font-size: 12.5px; color: #8fa3b8; }
+
+  @media (max-width: 860px) {
+    .grid-2, .grid-3, .steps, .badges, .stats-grid, .portal-grid, .footer-grid, .form-grid { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 33px; }
+    nav.main { display: none; }
+  }
 </style>
 </head>
 <body>
-<div class="container">
 
-<header>
-  <div class="mark">
-    <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
-      <rect x="31.2" y="2" width="1.6" height="14" fill="#ffffff"/>
-      <path d="M 32.8 3 L 42 6 L 32.8 9 Z" fill="#ffffff"/>
-      <rect x="30" y="14" width="4" height="2" fill="#f4a261"/>
-      <path d="M 32 14 L 18 24 L 46 24 Z" fill="#f4a261"/>
-      <path d="M 32 14 L 32 24 L 18 24 Z" fill="#0d3b66" opacity="0.18"/>
-      <rect x="17" y="24" width="30" height="1.5" fill="#f4a261"/>
-      <rect x="19" y="25.5" width="26" height="32" fill="#f4a261"/>
-      <rect x="25" y="28" width="14" height="20" fill="#0d3b66" opacity="0.15"/>
-      <rect x="22" y="29" width="2.5" height="5" fill="#0d3b66"/>
-      <rect x="26.5" y="29" width="3" height="5" fill="#0d3b66"/>
-      <rect x="30.5" y="29" width="3" height="5" fill="#0d3b66"/>
-      <rect x="34.5" y="29" width="3" height="5" fill="#0d3b66"/>
-      <rect x="39.5" y="29" width="2.5" height="5" fill="#0d3b66"/>
-      <rect x="22" y="38" width="2.5" height="5" fill="#0d3b66"/>
-      <rect x="26.5" y="38" width="3" height="5" fill="#0d3b66"/>
-      <rect x="30.5" y="38" width="3" height="5" fill="#0d3b66"/>
-      <rect x="34.5" y="38" width="3" height="5" fill="#0d3b66"/>
-      <rect x="39.5" y="38" width="2.5" height="5" fill="#0d3b66"/>
-      <path d="M 29 50 L 29 57 L 35 57 L 35 50 Q 32 47 29 50 Z" fill="#0d3b66"/>
-      <rect x="27" y="57" width="10" height="1.5" fill="#f4a261"/>
-    </svg>
+<div class="topbar">
+  <div class="wrap">
+    <div>24/7 live emergency dispatch for client properties</div>
+    <div><a href="mailto:info@backninetrades.com">info@backninetrades.com</a></div>
   </div>
-  <div class="brand-text">
-    <div class="brand-name">Back<span class="nine">9</span></div>
-    <div class="brand-sub">Trades</div>
+</div>
+
+<header class="site">
+  <div class="wrap nav-row">
+    <a class="brand-lockup" href="#top">
+      <div class="brand-mark">
+        <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+          <rect x="31.2" y="2" width="1.6" height="14" fill="#ffffff"/>
+          <path d="M 32.8 3 L 42 6 L 32.8 9 Z" fill="#ffffff"/>
+          <rect x="30" y="14" width="4" height="2" fill="#f4a261"/>
+          <path d="M 32 14 L 18 24 L 46 24 Z" fill="#f4a261"/>
+          <path d="M 32 14 L 32 24 L 18 24 Z" fill="#0d3b66" opacity="0.18"/>
+          <rect x="17" y="24" width="30" height="1.5" fill="#f4a261"/>
+          <rect x="19" y="25.5" width="26" height="32" fill="#f4a261"/>
+          <rect x="25" y="28" width="14" height="20" fill="#0d3b66" opacity="0.15"/>
+          <rect x="22" y="29" width="2.5" height="5" fill="#0d3b66"/>
+          <rect x="26.5" y="29" width="3" height="5" fill="#0d3b66"/>
+          <rect x="30.5" y="29" width="3" height="5" fill="#0d3b66"/>
+          <rect x="34.5" y="29" width="3" height="5" fill="#0d3b66"/>
+          <rect x="39.5" y="29" width="2.5" height="5" fill="#0d3b66"/>
+          <rect x="22" y="38" width="2.5" height="5" fill="#0d3b66"/>
+          <rect x="26.5" y="38" width="3" height="5" fill="#0d3b66"/>
+          <rect x="30.5" y="38" width="3" height="5" fill="#0d3b66"/>
+          <rect x="34.5" y="38" width="3" height="5" fill="#0d3b66"/>
+          <rect x="39.5" y="38" width="2.5" height="5" fill="#0d3b66"/>
+          <path d="M 29 50 L 29 57 L 35 57 L 35 50 Q 32 47 29 50 Z" fill="#0d3b66"/>
+          <rect x="27" y="57" width="10" height="1.5" fill="#f4a261"/>
+        </svg>
+      </div>
+      <div class="brand-text">
+        <div class="brand-name">Back<span class="nine">9</span></div>
+        <div class="brand-sub">Trades</div>
+      </div>
+    </a>
+    <nav class="main">
+      <a href="#services">Services</a>
+      <a href="#team">Team</a>
+      <a href="#process">How We Work</a>
+      <a href="#compliance">Compliance</a>
+      <a href="#faq">FAQ</a>
+      <a href="#portal" class="btn">Client Portal</a>
+    </nav>
   </div>
 </header>
 
-<h1>Brand Package</h1>
-<div class="tagline">Naming, identity, and go-to-market collateral for the new R&amp;M operating company.</div>
+<a id="top"></a>
 
-<div class="summary-grid">
-  <div class="stat">
-    <div class="label">Selected Name</div>
-    <div class="value">Backnine Trades</div>
+<section class="hero">
+  <div class="wrap">
+    <div class="kicker">Repair &amp; Maintenance for Multifamily</div>
+    <h1>One vendor for every work order across your Bay Area portfolio.</h1>
+    <p class="lede">
+      Back9 Trades is a full-service repair and maintenance company built for multifamily
+      owners and property managers in the San Francisco Bay Area. Founded by SF multifamily
+      veterans, we run day-to-day work orders, 24/7 emergencies, unit turns, and recurring
+      services with our own crews.
+    </p>
+    <div class="hero-ctas">
+      <a class="btn" href="#portal">Submit a Work Order</a>
+      <a class="btn ghost" href="#portal" onclick="showTab('proposal')">Request a Proposal</a>
+    </div>
   </div>
-  <div class="stat">
-    <div class="label">Primary Domain</div>
-    <div class="value">backninetrades.com</div>
-  </div>
-  <div class="stat">
-    <div class="label">Logo Mark</div>
-    <div class="value">SF Painted Lady + Flag</div>
-  </div>
-  <div class="stat">
-    <div class="label">Risk Tier</div>
-    <div class="value">Low</div>
+</section>
+
+<div class="stats">
+  <div class="wrap stats-grid">
+    <div class="stat"><div class="num">18+</div><div class="lbl">Field technicians &amp; supervisors</div></div>
+    <div class="stat"><div class="num">14</div><div class="lbl">Trade categories in-house</div></div>
+    <div class="stat"><div class="num">24/7</div><div class="lbl">Live emergency dispatch</div></div>
+    <div class="stat"><div class="num">Bilingual</div><div class="lbl">English / Spanish dispatch &amp; field</div></div>
   </div>
 </div>
 
-<div class="toc">This package contains three documents. Open each one for the full content.</div>
-
-<div class="doc">
-  <div class="doc-num">1</div>
-  <div class="doc-body">
-    <div class="doc-title">3PM Sales Flyer (One-Pager)</div>
-    <div class="doc-desc">Print-ready letter-size flyer for handing out to prospective third-party property managers. Covers services (general R&amp;M, after-hours, unit turns, packaged services), team strength, pricing approach, and contact.</div>
-    <a class="doc-link" href="flyer.html">Open Flyer &rarr;</a>
-    <span class="filename">flyer.html</span>
+<section class="section" id="services">
+  <div class="wrap">
+    <div class="kicker">Services</div>
+    <h2>Full-service R&amp;M, all under one roof</h2>
+    <p class="section-intro">
+      Work orders, after-hours coverage, unit turns, and recurring services from one vendor
+      with one point of contact. Every job is photo-documented and closed out properly.
+    </p>
+    <div class="grid-2">
+      <div class="card navy">
+        <h3>General Maintenance &amp; Work Orders</h3>
+        <p>Day-to-day repairs across plumbing, electrical, appliances, carpentry, painting, locks, access systems, common areas, pest, and fire and safety.</p>
+        <ul>
+          <li>Single point of contact for all trades</li>
+          <li>Yardi, AppFolio, and Buildium friendly intake</li>
+          <li>Photo documentation and closeout on every work order</li>
+          <li>Licensed CA contractors for permitted scopes</li>
+        </ul>
+      </div>
+      <div class="card red">
+        <h3>24/7 After-Hours &amp; Emergency</h3>
+        <p>Live dispatch nights, weekends, and holidays. Floods, lockouts, no-heat, no-power, and security issues are covered.</p>
+        <ul>
+          <li>Emergency on-call retainer available</li>
+          <li>Target response under 60 minutes for life-safety</li>
+          <li>After-hours lockout dispatch</li>
+          <li>Direct line to a person, not a voicemail</li>
+        </ul>
+      </div>
+      <div class="card green">
+        <h3>Unit Turnover Program</h3>
+        <p>Move-out to make-ready in days, not weeks. Flat-rate or scoped pricing with no surprises.</p>
+        <ul>
+          <li>Trash-out, paint, clean, punch, key</li>
+          <li>Standardized turn checklist and QC walk</li>
+          <li>Photo report delivered before relisting</li>
+          <li>Volume turn pricing for portfolios</li>
+        </ul>
+      </div>
+      <div class="card gray">
+        <h3>Recurring &amp; Packaged Services</h3>
+        <p>Predictable monthly billing for the work that has to happen anyway.</p>
+        <ul>
+          <li>Janitorial and common area cleaning</li>
+          <li>Preventive pest control</li>
+          <li>Landscaping and exterior upkeep</li>
+          <li>Planned-maintenance and PM membership programs</li>
+        </ul>
+      </div>
+    </div>
   </div>
-</div>
+</section>
 
-<div class="doc">
-  <div class="doc-num">2</div>
-  <div class="doc-body">
-    <div class="doc-title">Naming Decision Record</div>
-    <div class="doc-desc">Final shortlist of 10 names with .com domain availability and risk assessment. Documents eliminated names, domain defensives, and pre-launch checklist (trademark search, business filing, social handles).</div>
-    <a class="doc-link" href="naming.html">Open Record &rarr;</a>
-    <span class="filename">naming.html</span>
+<section class="section alt" id="team">
+  <div class="wrap">
+    <div class="kicker">The Team</div>
+    <h2>Experienced crews, fourteen trades, in-house</h2>
+    <p class="section-intro">
+      Our field team is built from technicians and supervisors with years of multifamily
+      experience across San Francisco buildings. Crews are uniformed, badged, background-screened,
+      and OSHA-trained. Dispatch and field staff operate in English and Spanish.
+    </p>
+    <div class="chips">
+      <span class="chip">Plumbing</span>
+      <span class="chip">Electrical</span>
+      <span class="chip">HVAC</span>
+      <span class="chip">Appliance Repair</span>
+      <span class="chip">Carpentry</span>
+      <span class="chip">Painting</span>
+      <span class="chip">Flooring</span>
+      <span class="chip">Locks &amp; Access Systems</span>
+      <span class="chip">Fire &amp; Safety</span>
+      <span class="chip">Pest Control</span>
+      <span class="chip">Janitorial</span>
+      <span class="chip">Low-Voltage / IT</span>
+      <span class="chip">Common-Area Repairs</span>
+      <span class="chip">Unit Turn / Make-Ready</span>
+    </div>
+    <div class="grid-3" style="margin-top:36px;">
+      <div class="card">
+        <h3>Owner-operator DNA</h3>
+        <p>Founded by SF multifamily veterans. We treat every work order the way we treat our own buildings.</p>
+      </div>
+      <div class="card">
+        <h3>Independent and conflict-free</h3>
+        <p>No institutional ownership ties. Your properties get the same priority as ours.</p>
+      </div>
+      <div class="card">
+        <h3>Built for occupied buildings</h3>
+        <p>Resident scheduling, access coordination, and clean job sites come standard. Your tenants hear from us professionally and on time.</p>
+      </div>
+    </div>
   </div>
-</div>
+</section>
 
-<div class="doc">
-  <div class="doc-num">3</div>
-  <div class="doc-body">
-    <div class="doc-title">Logo Lockup Options</div>
-    <div class="doc-desc">Selected lockup (Painted Lady mark + Back9 wordmark) plus concept marks for all 9 alternate names &mdash; oak tree, Bay Bridge, laurel wreath, Victorian tower, golf-themed marks, etc. For reference and future variation.</div>
-    <a class="doc-link" href="logos.html">Open Logo Sheet &rarr;</a>
-    <span class="filename">logos.html</span>
+<section class="section" id="process">
+  <div class="wrap">
+    <div class="kicker">How We Work</div>
+    <h2>From intake to closeout</h2>
+    <p class="section-intro">
+      A simple, documented process on every job so your team always knows where a work order stands.
+    </p>
+    <div class="steps">
+      <div class="step">
+        <div class="num">1</div>
+        <h3>Intake</h3>
+        <p>Submit through the client portal, your PM software, email, or phone. We confirm scope and access.</p>
+      </div>
+      <div class="step">
+        <div class="num">2</div>
+        <h3>Dispatch</h3>
+        <p>The right trade is assigned and scheduled with the resident. Emergencies go to live 24/7 dispatch.</p>
+      </div>
+      <div class="step">
+        <div class="num">3</div>
+        <h3>Work &amp; Document</h3>
+        <p>Uniformed, badged technicians complete the work with photo documentation before and after.</p>
+      </div>
+      <div class="step">
+        <div class="num">4</div>
+        <h3>Closeout</h3>
+        <p>You receive the photo record and a clean invoice tied to the work order. Turns include a QC walk.</p>
+      </div>
+    </div>
   </div>
-</div>
+</section>
 
-<footer>
-  <strong>Package contents:</strong> index.html (this file) &middot; flyer.html &middot; naming.html &middot; logos.html<br>
-  <strong>Print:</strong> Each document is letter-size and prints clean from a browser (Cmd+P &rarr; Save as PDF).
+<section class="section alt" id="compliance">
+  <div class="wrap">
+    <div class="kicker">Coverage &amp; Compliance</div>
+    <h2>Serving the San Francisco Bay Area</h2>
+    <p class="section-intro">
+      Based in San Francisco and serving multifamily portfolios throughout the Bay Area.
+      Risk and compliance documentation is ready for your vendor file.
+    </p>
+    <div class="badges">
+      <div class="badge"><strong>Licensed CA Contractor</strong>Licensed contractors handle all permitted scopes.</div>
+      <div class="badge"><strong>Insured</strong>Workers compensation and general liability on file. COI issued to your entity on request.</div>
+      <div class="badge"><strong>Screened &amp; Trained Crews</strong>OSHA-trained, background-screened, uniformed, and badged technicians.</div>
+      <div class="badge"><strong>Photo-Documented Work</strong>Before-and-after photos and closeout records on every work order.</div>
+      <div class="badge"><strong>PM Software Friendly</strong>Intake compatible with Yardi, AppFolio, and Buildium workflows.</div>
+      <div class="badge"><strong>Volume Pricing</strong>Tiered portfolio pricing with typical savings of 5 to 15% off published rates, plus bundling discounts on packaged services.</div>
+    </div>
+  </div>
+</section>
+
+<section class="section portal" id="portal">
+  <div class="wrap">
+    <div class="kicker">Client Portal</div>
+    <h2>Submit a work order or request a proposal</h2>
+    <p class="section-intro">
+      Existing clients can submit work orders here. Prospective clients can request a proposal
+      or a bid on a defined scope. Submissions route directly to our dispatch and estimating inbox.
+    </p>
+    <div class="portal-grid">
+      <div class="portal-card">
+        <div class="tabs">
+          <button class="tab active" id="tab-workorder" onclick="showTab('workorder')" type="button">Submit a Work Order</button>
+          <button class="tab" id="tab-proposal" onclick="showTab('proposal')" type="button">Request a Proposal / Bid</button>
+        </div>
+
+        <form id="form-workorder" onsubmit="return sendForm(event, 'workorder')">
+          <div class="form-grid">
+            <div><label for="wo-name">Your name</label><input id="wo-name" required></div>
+            <div><label for="wo-company">Company / portfolio</label><input id="wo-company"></div>
+            <div><label for="wo-email">Email</label><input id="wo-email" type="email" required></div>
+            <div><label for="wo-phone">Phone</label><input id="wo-phone" type="tel"></div>
+            <div class="full"><label for="wo-property">Property address &amp; unit</label><input id="wo-property" required></div>
+            <div>
+              <label for="wo-priority">Priority</label>
+              <select id="wo-priority">
+                <option>Routine</option>
+                <option>Urgent (24 to 48 hours)</option>
+                <option>Emergency (life-safety / habitability)</option>
+              </select>
+            </div>
+            <div>
+              <label for="wo-trade">Trade needed</label>
+              <select id="wo-trade">
+                <option>Plumbing</option>
+                <option>Electrical</option>
+                <option>HVAC</option>
+                <option>Appliance Repair</option>
+                <option>Carpentry</option>
+                <option>Painting</option>
+                <option>Flooring</option>
+                <option>Locks &amp; Access</option>
+                <option>Fire &amp; Safety</option>
+                <option>Pest Control</option>
+                <option>Janitorial</option>
+                <option>Common Area</option>
+                <option>Unit Turn / Make-Ready</option>
+                <option>Other / Not Sure</option>
+              </select>
+            </div>
+            <div class="full"><label for="wo-desc">Describe the issue</label><textarea id="wo-desc" required placeholder="What is happening, where in the unit, and any access notes."></textarea></div>
+            <div class="full"><button class="btn" type="submit">Send Work Order</button></div>
+          </div>
+          <div class="form-note">
+            For active emergencies, call our dispatch line. This form opens a pre-filled email
+            to dispatch from your mail client; nothing is stored on this site.
+          </div>
+        </form>
+
+        <form id="form-proposal" style="display:none;" onsubmit="return sendForm(event, 'proposal')">
+          <div class="form-grid">
+            <div><label for="pr-name">Your name</label><input id="pr-name" required></div>
+            <div><label for="pr-company">Company / portfolio</label><input id="pr-company"></div>
+            <div><label for="pr-email">Email</label><input id="pr-email" type="email" required></div>
+            <div><label for="pr-phone">Phone</label><input id="pr-phone" type="tel"></div>
+            <div>
+              <label for="pr-type">What do you need?</label>
+              <select id="pr-type">
+                <option>Portfolio R&amp;M proposal</option>
+                <option>Bid on a defined scope</option>
+                <option>Unit turn program pricing</option>
+                <option>Recurring services (janitorial, pest, landscaping)</option>
+                <option>Emergency / after-hours retainer</option>
+              </select>
+            </div>
+            <div><label for="pr-units">Units / properties (approx.)</label><input id="pr-units"></div>
+            <div class="full"><label for="pr-desc">Tell us about the portfolio or scope</label><textarea id="pr-desc" required placeholder="Locations, building types, current vendor setup, and timing."></textarea></div>
+            <div class="full"><button class="btn" type="submit">Request Proposal</button></div>
+          </div>
+          <div class="form-note">
+            Send us a sample month of work orders and we will come back with a custom quote
+            sheet within 5 business days.
+          </div>
+        </form>
+      </div>
+      <div class="portal-side">
+        <h3 style="color:#fff; margin-top:0;">What to expect</h3>
+        <ul>
+          <li>Work orders are confirmed by dispatch with a scheduled window.</li>
+          <li>Emergencies go straight to live 24/7 dispatch with a target response under 60 minutes for life-safety issues.</li>
+          <li>Proposal requests get a custom quote sheet within 5 business days of receiving your sample work-order data.</li>
+          <li>Every completed job comes back to you with photo documentation.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="faq">
+  <div class="wrap">
+    <div class="kicker">FAQ</div>
+    <h2>Questions property managers ask us</h2>
+    <div style="max-width:760px; margin-top:28px;">
+      <details>
+        <summary>Are you licensed and insured?</summary>
+        <p>Yes. Licensed CA contractors handle all permitted scopes, and we carry workers compensation and general liability coverage. A certificate of insurance is issued to your entity on request for your vendor file.</p>
+      </details>
+      <details>
+        <summary>Can you work inside our property management software?</summary>
+        <p>Yes. Our intake is built to work with Yardi, AppFolio, and Buildium workflows, so your team can route work orders to us the same way they do today.</p>
+      </details>
+      <details>
+        <summary>How do after-hours emergencies work?</summary>
+        <p>Dispatch is live 24/7 for nights, weekends, and holidays. Floods, lockouts, no-heat, no-power, and security issues are covered, with a target response under 60 minutes for life-safety calls. An emergency on-call retainer is available for portfolios that want guaranteed coverage.</p>
+      </details>
+      <details>
+        <summary>How is pricing structured?</summary>
+        <p>General maintenance is billed at mid-market hourly rates, licensed trades are priced competitively against local providers, emergencies carry a premium with a minimum charge, and unit turns are flat-rate per unit. Volume discounts scale with portfolio size and committed work-order volume, with typical savings of 5 to 15% off published rates. A detailed quote sheet is provided on request.</p>
+      </details>
+      <details>
+        <summary>How do you handle residents and occupied units?</summary>
+        <p>Technicians are uniformed, badged, and background-screened. We coordinate scheduling and access directly with residents when you want us to, and every job is photo-documented from start to closeout.</p>
+      </details>
+      <details>
+        <summary>What does a unit turn include?</summary>
+        <p>Trash-out, paint, cleaning, punch list, and keying, run against a standardized turn checklist with a QC walk at the end. You receive a photo report before the unit is relisted. Volume pricing is available for portfolios with steady turn flow.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="brand-name" style="color:#fff;">Back<span class="nine">9</span></div>
+        <div class="brand-sub" style="color:#fff; border-top-color:var(--orange);">Trades</div>
+        <p style="margin-top:14px; max-width:340px;">
+          Repair and maintenance built for SF multifamily operators. Backed by veteran
+          San Francisco multifamily operators.
+        </p>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">Maintenance &amp; Work Orders</a></li>
+          <li><a href="#services">24/7 Emergency</a></li>
+          <li><a href="#services">Unit Turns</a></li>
+          <li><a href="#services">Recurring Services</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:info@backninetrades.com">info@backninetrades.com</a></li>
+          <li>San Francisco Bay Area</li>
+          <li><a href="#portal">Client Portal</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="fine">
+      Backnine Trades &middot; Licensed CA Contractor &middot; Fully insured &middot; W/C &amp; GL on file &middot; San Francisco Bay Area
+    </div>
+  </div>
 </footer>
 
-</div>
+<script>
+function showTab(which) {
+  var wo = document.getElementById('form-workorder');
+  var pr = document.getElementById('form-proposal');
+  var tw = document.getElementById('tab-workorder');
+  var tp = document.getElementById('tab-proposal');
+  if (!wo) return true;
+  if (which === 'proposal') {
+    wo.style.display = 'none'; pr.style.display = 'block';
+    tp.classList.add('active'); tw.classList.remove('active');
+  } else {
+    pr.style.display = 'none'; wo.style.display = 'block';
+    tw.classList.add('active'); tp.classList.remove('active');
+  }
+  return true;
+}
+function sendForm(e, kind) {
+  e.preventDefault();
+  var v = function (id) { var el = document.getElementById(id); return el ? el.value : ''; };
+  var subject, body;
+  if (kind === 'workorder') {
+    subject = 'Work Order: ' + v('wo-property') + ' [' + v('wo-priority') + ']';
+    body = 'Name: ' + v('wo-name') +
+      '\nCompany: ' + v('wo-company') +
+      '\nEmail: ' + v('wo-email') +
+      '\nPhone: ' + v('wo-phone') +
+      '\nProperty / Unit: ' + v('wo-property') +
+      '\nPriority: ' + v('wo-priority') +
+      '\nTrade: ' + v('wo-trade') +
+      '\n\nIssue:\n' + v('wo-desc');
+  } else {
+    subject = 'Proposal Request: ' + v('pr-type') + ' (' + (v('pr-company') || v('pr-name')) + ')';
+    body = 'Name: ' + v('pr-name') +
+      '\nCompany: ' + v('pr-company') +
+      '\nEmail: ' + v('pr-email') +
+      '\nPhone: ' + v('pr-phone') +
+      '\nRequest type: ' + v('pr-type') +
+      '\nUnits / properties: ' + v('pr-units') +
+      '\n\nScope:\n' + v('pr-desc');
+  }
+  window.location.href = 'mailto:info@backninetrades.com?subject=' +
+    encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+  return false;
+}
+</script>
+
 </body>
 </html>
