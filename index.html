@@ -135,11 +135,25 @@
 
   /* Hero */
   .hero {
-    background: linear-gradient(160deg, var(--navy) 0%, var(--navy-dark) 75%);
+    background: linear-gradient(160deg, rgba(13,59,102,0.93) 0%, rgba(9,43,76,0.84) 70%), url("images/sf-skyline-dusk.jpg");
+    background-size: cover;
+    background-position: center 38%;
     color: #fff;
     padding: 88px 0 72px;
   }
   .hero .kicker { color: var(--orange); }
+
+  /* Imagery */
+  .media-split { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 44px; align-items: center; }
+  .media-split .section-intro { margin-bottom: 0; }
+  .media-frame { border-radius: 8px; overflow: hidden; box-shadow: 0 14px 34px rgba(13,59,102,0.20); }
+  .media-frame img { display: block; width: 100%; height: 100%; object-fit: cover; }
+  .work-strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 0 0 36px; }
+  .work-card { position: relative; border-radius: 8px; overflow: hidden; aspect-ratio: 4 / 3; box-shadow: 0 8px 22px rgba(13,59,102,0.14); }
+  .work-card img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .4s ease; }
+  .work-card:hover img { transform: scale(1.05); }
+  .work-card::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0) 50%, rgba(0,0,0,0.5) 100%); }
+  .work-card span { position: absolute; left: 13px; bottom: 11px; z-index: 1; color: #fff; font-size: 11.5px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
   .hero h1 {
     font-family: Georgia, "Times New Roman", serif;
     font-size: 46px;
@@ -325,7 +339,8 @@
   .fine { border-top: 1px solid rgba(255,255,255,0.15); padding-top: 18px; font-size: 12.5px; color: #8fa3b8; }
 
   @media (max-width: 860px) {
-    .grid-2, .grid-3, .steps, .badges, .stats-grid, .portal-grid, .footer-grid, .form-grid { grid-template-columns: 1fr; }
+    .grid-2, .grid-3, .steps, .badges, .stats-grid, .portal-grid, .footer-grid, .form-grid, .media-split { grid-template-columns: 1fr; }
+    .work-strip { grid-template-columns: 1fr 1fr; }
     .hero h1 { font-size: 33px; }
     nav.main { display: none; }
   }
@@ -395,14 +410,19 @@
   <div class="wrap">
     <div class="kicker">Our Name</div>
     <h2>Making the turn</h2>
-    <p class="section-intro">
-      Back9 Trades was started by a group of San Francisco multifamily veterans. The name came from
-      one of us, a lifelong golfer whose passion inspired it, but it reflects all of us. On the
-      course, the back nine is where you make the turn and start heading home. We've spent decades in
-      this business, and we understand what home means to our residents, to our clients, and to our
-      own families. When a repair is hanging over your building, we handle it right and make home
-      comfortable again for the people who live there.
-    </p>
+    <div class="media-split">
+      <p class="section-intro">
+        Back9 Trades was started by a group of San Francisco multifamily veterans. The name came from
+        one of us, a lifelong golfer whose passion inspired it, but it reflects all of us. On the
+        course, the back nine is where you make the turn and start heading home. We've spent decades in
+        this business, and we understand what home means to our residents, to our clients, and to our
+        own families. When a repair is hanging over your building, we handle it right and make home
+        comfortable again for the people who live there.
+      </p>
+      <div class="media-frame">
+        <img src="images/sf-street.jpg" alt="A classic San Francisco hill street lined with multifamily buildings" loading="lazy">
+      </div>
+    </div>
   </div>
 </section>
 
@@ -414,6 +434,11 @@
       Work orders, after-hours coverage, unit turns, and recurring services from one vendor
       with one point of contact. Every job is photo-documented and closed out properly.
     </p>
+    <div class="work-strip">
+      <div class="work-card"><img src="images/work-plumbing.jpg" alt="Plumbing repair in progress" loading="lazy"><span>Plumbing</span></div>
+      <div class="work-card"><img src="images/work-outlet.jpg" alt="Electrical work inside a unit" loading="lazy"><span>Electrical</span></div>
+      <div class="work-card"><img src="images/work-painting.jpg" alt="Interior painting during a unit turn" loading="lazy"><span>Unit Turns</span></div>
+    </div>
     <div class="grid-2">
       <div class="card navy">
         <h3>General Maintenance &amp; Work Orders</h3>
@@ -541,6 +566,9 @@
       Based in San Francisco and serving multifamily portfolios throughout the Bay Area.
       Risk and compliance documentation is ready for your vendor file.
     </p>
+    <div class="media-frame" style="aspect-ratio: 3 / 1; margin-bottom: 36px;">
+      <img src="images/sf-skyline-day.jpg" alt="San Francisco skyline and neighborhoods seen from Twin Peaks" loading="lazy">
+    </div>
     <div class="badges">
       <div class="badge"><strong>Licensed CA Contractor</strong>Licensed contractors handle all permitted scopes.</div>
       <div class="badge"><strong>Insured</strong>Workers compensation and general liability on file. COI issued to your entity on request.</div>

@@ -12,8 +12,11 @@ Client-facing marketing site for Backnine Trades, a third-party R&M operating co
 | `flyer.html` | One-page sales flyer for prospective 3rd-party PMs |
 | `naming.html` | Naming decision record — shortlist, domains, risk assessment |
 | `logos.html` | Logo lockup options (selected mark + alternates) |
+| `images/` | Site photography (SF cityscape + in-unit trade work) |
 
-The homepage was rebuilt 2026-06-12 against the competitive survey in `../docs/Competitive_Survey_SF_Handyman_CM_2026-06-12.md`. Portal forms POST to `/api/submit`, which emails each submission to the dispatch inbox via Resend (see **Portal forms backend** below). Do not add license numbers, insurance limits, phone numbers, testimonials, or photos until they are real.
+The homepage was rebuilt 2026-06-12 against the competitive survey in `../docs/Competitive_Survey_SF_Handyman_CM_2026-06-12.md`. Portal forms POST to `/api/submit`, which emails each submission to the dispatch inbox via Resend (see **Portal forms backend** below). Do not add license numbers, insurance limits, phone numbers, or testimonials until they are real.
+
+**Photos are licensed stock placeholders, not Back9's own work.** The images in `images/` are from Pexels (Pexels License — free for commercial use, no attribution required) and are used as representative atmosphere, not captioned as our crew or buildings. Swap them for real Back9 job-site and team photos when available. Sourced 2026-06-26: `sf-skyline-dusk` (hero), `sf-street` (about), `sf-skyline-day` (compliance banner), `work-plumbing` / `work-outlet` / `work-painting` (Services trade strip).
 
 ## Local preview
 
