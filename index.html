@@ -276,6 +276,13 @@
   }
   textarea { min-height: 96px; resize: vertical; }
   .form-note { font-size: 12.5px; color: var(--muted); margin-top: 12px; }
+  .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+  .btn:disabled { opacity: 0.6; cursor: progress; }
+  .form-status { font-size: 13px; line-height: 1.45; margin-top: 2px; }
+  .form-status:empty { display: none; }
+  .form-status.is-pending { color: var(--muted); }
+  .form-status.is-ok { color: #1a7f4b; font-weight: 600; }
+  .form-status.is-error { color: #b3261e; font-weight: 600; }
   .portal-side { font-size: 14.5px; color: #c8d3e0; }
   .portal-side li { margin-bottom: 8px; }
   .portal-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 40px; align-items: start; }
@@ -598,11 +605,13 @@
               </select>
             </div>
             <div class="full"><label for="wo-desc">Describe the issue</label><textarea id="wo-desc" required placeholder="What is happening, where in the unit, and any access notes."></textarea></div>
-            <div class="full"><button class="btn" type="submit">Send Work Order</button></div>
+            <div class="hp" aria-hidden="true"><label for="wo-website">Leave this blank</label><input id="wo-website" tabindex="-1" autocomplete="off"></div>
+            <div class="full"><button class="btn" id="wo-submit" type="submit">Send Work Order</button></div>
+            <div class="full"><div id="wo-status" class="form-status" role="status" aria-live="polite"></div></div>
           </div>
           <div class="form-note">
-            For active emergencies, call our dispatch line. This form opens a pre-filled email
-            to dispatch from your mail client; nothing is stored on this site.
+            For active emergencies, call our dispatch line. Submissions go straight to our
+            dispatch and estimating inbox.
           </div>
         </form>
 
@@ -624,7 +633,9 @@
             </div>
             <div><label for="pr-units">Units / properties (approx.)</label><input id="pr-units"></div>
             <div class="full"><label for="pr-desc">Tell us about the portfolio or scope</label><textarea id="pr-desc" required placeholder="Locations, building types, current vendor setup, and timing."></textarea></div>
-            <div class="full"><button class="btn" type="submit">Request Proposal</button></div>
+            <div class="hp" aria-hidden="true"><label for="pr-website">Leave this blank</label><input id="pr-website" tabindex="-1" autocomplete="off"></div>
+            <div class="full"><button class="btn" id="pr-submit" type="submit">Request Proposal</button></div>
+            <div class="full"><div id="pr-status" class="form-status" role="status" aria-live="polite"></div></div>
           </div>
           <div class="form-note">
             Send us a sample month of work orders and we will come back with a custom quote
@@ -731,30 +742,53 @@ function showTab(which) {
 }
 function sendForm(e, kind) {
   e.preventDefault();
-  var v = function (id) { var el = document.getElementById(id); return el ? el.value : ''; };
-  var subject, body;
+  var v = function (id) { var el = document.getElementById(id); return el ? el.value.trim() : ''; };
+  var prefix = kind === 'workorder' ? 'wo' : 'pr';
+  var btn = document.getElementById(prefix + '-submit');
+  var status = document.getElementById(prefix + '-status');
+  var payload;
   if (kind === 'workorder') {
-    subject = 'Work Order: ' + v('wo-property') + ' [' + v('wo-priority') + ']';
-    body = 'Name: ' + v('wo-name') +
-      '\nCompany: ' + v('wo-company') +
-      '\nEmail: ' + v('wo-email') +
-      '\nPhone: ' + v('wo-phone') +
-      '\nProperty / Unit: ' + v('wo-property') +
-      '\nPriority: ' + v('wo-priority') +
-      '\nTrade: ' + v('wo-trade') +
-      '\n\nIssue:\n' + v('wo-desc');
+    payload = {
+      kind: 'workorder',
+      name: v('wo-name'), company: v('wo-company'), email: v('wo-email'), phone: v('wo-phone'),
+      property: v('wo-property'), priority: v('wo-priority'), trade: v('wo-trade'), description: v('wo-desc'),
+      website: v('wo-website')
+    };
   } else {
-    subject = 'Proposal Request: ' + v('pr-type') + ' (' + (v('pr-company') || v('pr-name')) + ')';
-    body = 'Name: ' + v('pr-name') +
-      '\nCompany: ' + v('pr-company') +
-      '\nEmail: ' + v('pr-email') +
-      '\nPhone: ' + v('pr-phone') +
-      '\nRequest type: ' + v('pr-type') +
-      '\nUnits / properties: ' + v('pr-units') +
-      '\n\nScope:\n' + v('pr-desc');
+    payload = {
+      kind: 'proposal',
+      name: v('pr-name'), company: v('pr-company'), email: v('pr-email'), phone: v('pr-phone'),
+      requestType: v('pr-type'), units: v('pr-units'), description: v('pr-desc'),
+      website: v('pr-website')
+    };
   }
-  window.location.href = 'mailto:info@backninetrades.com?subject=' +
-    encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+
+  var setStatus = function (msg, state) {
+    if (!status) return;
+    status.textContent = msg;
+    status.className = 'form-status' + (state ? ' is-' + state : '');
+  };
+
+  if (btn) { btn.disabled = true; btn.dataset.label = btn.textContent; btn.textContent = 'Sending…'; }
+  setStatus('Sending your request…', 'pending');
+
+  fetch('/api/submit', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload)
+  }).then(function (r) {
+    return r.json().then(function (data) { return { ok: r.ok, data: data }; });
+  }).then(function (res) {
+    if (!res.ok) throw new Error((res.data && res.data.error) || 'Something went wrong.');
+    setStatus('Thanks — your request is in. We will follow up at the email you provided.', 'ok');
+    var form = document.getElementById('form-' + kind);
+    if (form) form.reset();
+  }).catch(function (err) {
+    setStatus('We could not send that. Email us directly at info@backninetrades.com — ' + err.message, 'error');
+  }).then(function () {
+    if (btn) { btn.disabled = false; btn.textContent = btn.dataset.label || 'Submit'; }
+  });
+
   return false;
 }
 </script>
