@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Back9 Trades — Repair &amp; Maintenance for Bay Area Multifamily</title>
 <meta name="description" content="Back9 Trades is a full-service repair and maintenance company for multifamily owners and property managers in the San Francisco Bay Area. Work orders, 24/7 emergency dispatch, unit turns, and recurring services.">
+<link rel="icon" type="image/png" href="b9.png">
+<link rel="apple-touch-icon" href="b9.png">
 <style>
   :root {
     --navy: #0d3b66;
@@ -76,7 +78,7 @@
     display: flex; align-items: center; justify-content: center;
     flex-shrink: 0;
   }
-  .brand-mark svg { width: 36px; height: 36px; display: block; }
+  .brand-mark img { width: 100%; height: 100%; object-fit: contain; display: block; }
   .brand-text { line-height: 1; }
   .brand-name {
     font-family: Georgia, "Times New Roman", serif;
@@ -342,28 +344,7 @@
   <div class="wrap nav-row">
     <a class="brand-lockup" href="#top">
       <div class="brand-mark">
-        <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
-          <rect x="31.2" y="2" width="1.6" height="14" fill="#ffffff"/>
-          <path d="M 32.8 3 L 42 6 L 32.8 9 Z" fill="#ffffff"/>
-          <rect x="30" y="14" width="4" height="2" fill="#f4a261"/>
-          <path d="M 32 14 L 18 24 L 46 24 Z" fill="#f4a261"/>
-          <path d="M 32 14 L 32 24 L 18 24 Z" fill="#0d3b66" opacity="0.18"/>
-          <rect x="17" y="24" width="30" height="1.5" fill="#f4a261"/>
-          <rect x="19" y="25.5" width="26" height="32" fill="#f4a261"/>
-          <rect x="25" y="28" width="14" height="20" fill="#0d3b66" opacity="0.15"/>
-          <rect x="22" y="29" width="2.5" height="5" fill="#0d3b66"/>
-          <rect x="26.5" y="29" width="3" height="5" fill="#0d3b66"/>
-          <rect x="30.5" y="29" width="3" height="5" fill="#0d3b66"/>
-          <rect x="34.5" y="29" width="3" height="5" fill="#0d3b66"/>
-          <rect x="39.5" y="29" width="2.5" height="5" fill="#0d3b66"/>
-          <rect x="22" y="38" width="2.5" height="5" fill="#0d3b66"/>
-          <rect x="26.5" y="38" width="3" height="5" fill="#0d3b66"/>
-          <rect x="30.5" y="38" width="3" height="5" fill="#0d3b66"/>
-          <rect x="34.5" y="38" width="3" height="5" fill="#0d3b66"/>
-          <rect x="39.5" y="38" width="2.5" height="5" fill="#0d3b66"/>
-          <path d="M 29 50 L 29 57 L 35 57 L 35 50 Q 32 47 29 50 Z" fill="#0d3b66"/>
-          <rect x="27" y="57" width="10" height="1.5" fill="#f4a261"/>
-        </svg>
+        <img src="b9.png" alt="Back9 Trades">
       </div>
       <div class="brand-text">
         <div class="brand-name">Back<span class="nine">9</span></div>
@@ -693,8 +674,13 @@
   <div class="wrap">
     <div class="footer-grid">
       <div>
-        <div class="brand-name" style="color:#fff;">Back<span class="nine">9</span></div>
-        <div class="brand-sub" style="color:#fff; border-top-color:var(--orange);">Trades</div>
+        <div class="brand-lockup">
+          <div class="brand-mark"><img src="b9.png" alt="Back9 Trades"></div>
+          <div class="brand-text">
+            <div class="brand-name" style="color:#fff;">Back<span class="nine">9</span></div>
+            <div class="brand-sub" style="color:#fff; border-top-color:var(--orange);">Trades</div>
+          </div>
+        </div>
         <p style="margin-top:14px; max-width:340px;">
           Repair and maintenance built for SF multifamily operators. Backed by veteran
           San Francisco multifamily operators.
